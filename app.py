@@ -217,7 +217,7 @@ def disable_form():
 def main():
     st.title(assistant_title)
     st.markdown("""Version 1.0""")
-    st.markdown(""" Hello! I am an OpenAI powered assistant called AI Feature Doc Pro. My job is to create help center documentation for your features.
+    st.markdown(""" Hello! I am an OpenAI powered assistant called AI Feature Doc Pro. My job is to create help center documentation for your features. Example: Write me documentation for AI Feature Doc Pro
     """)    
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
