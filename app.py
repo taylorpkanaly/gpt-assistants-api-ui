@@ -218,9 +218,7 @@ def main():
     st.title(assistant_title)
     st.markdown("""Version 1.0""")
     st.markdown(""" Hello! I am an OpenAI powered assistant called AI Feature Doc Pro. My job is to create help center documentation for your features.
-    """)
-    st.markdown("[Download Documentation](/Users/tpaschal/ai-assistant-doc/gpt-assistants-api-ui/FeatureDocPro.pdf)")
-    
+    """)    
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
     )
