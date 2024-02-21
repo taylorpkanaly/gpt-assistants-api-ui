@@ -25,8 +25,8 @@
 5. 🔑 Set environment variables
 
     ```bash
-    OPENAI_API_KEY="sk-xxx"
-    ASSISTANT_ID="asst_xxx"
+    OPENAI_API_KEY="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"
+    ASSISTANT_ID="asst_I97FSsdw6DjVmWmxehXrLR9r"
 
     ASSISTANT_TITLE="Assistants API UI"
     ENABLED_FILE_UPLOAD_MESSAGE="Upload a file" # Leave empty to disable

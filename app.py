@@ -14,7 +14,7 @@ api_key = os.environ.get("OPENAI_API_KEY")
 client = openai.OpenAI(api_key=api_key)
 assistant_id = os.environ.get("ASSISTANT_ID")
 instructions = os.environ.get("RUN_INSTRUCTIONS", "")
-assistant_title = os.environ.get("ASSISTANT_TITLE", "Assistants API UI")
+assistant_title = os.environ.get("ASSISTANT_TITLE", "AI Feature Doc Pro")
 enabled_file_upload_message = os.environ.get("ENABLED_FILE_UPLOAD_MESSAGE", "Upload a file")
 
 
@@ -216,36 +216,28 @@ def disable_form():
 
 def main():
     st.title(assistant_title)
+    st.markdown("""Version 1.0""")
+    st.markdown(""" Hello! I am an OpenAI powered assistant called AI Feature Doc Pro. My job is to create help center documentation for your features.
+    """)
+    st.markdown("[Download Documentation](/Users/tpaschal/ai-assistant-doc/gpt-assistants-api-ui/FeatureDocPro.pdf)")
+    
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
     )
-    if enabled_file_upload_message:
-        uploaded_file = st.sidebar.file_uploader(
-            enabled_file_upload_message,
-            type=[
-                "txt",
-                "pdf",
-                "png",
-                "jpg",
-                "jpeg",
-                "csv",
-                "json",
-                "geojson",
-                "xlsx",
-                "xls",
-            ],
-            disabled=st.session_state.in_progress,
-        )
-    else:
-        uploaded_file = None
+    st.sidebar.image("me.jpg")
+    st.sidebar.markdown("<h1 style='text-align: center; color: black;'>About Me</h1>", unsafe_allow_html=True)
+    st.sidebar.markdown("Hello! I'm Taylor Kanaly, and I'm currently #OpenToWork. I created this site to explore AI technologies, with the aim of aiding businesses in developing effective roadmaps. I aspire to be your liaison, bridging the gap between business and technology to advance your company's initiatives. Let's connect on [LinkedIn](https://www.linkedin.com/in/taylorpaschal/).")
+    if user_msg:
+        render_chat()
+        # rest of
     if user_msg:
         render_chat()
         with st.chat_message("user"):
             st.markdown(user_msg, True)
         st.session_state.chat_log.append({"name": "user", "msg": user_msg})
         file = None
-        if uploaded_file is not None:
-            file = handle_uploaded_file(uploaded_file)
+       # if uploaded_file is not None:
+           # file = handle_uploaded_file(uploaded_file)
         with st.spinner("Wait for response..."):
             response = get_response(user_msg, file)
         with st.chat_message("Assistant"):
